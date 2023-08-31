@@ -24,7 +24,7 @@ import Home from "./components/Home";
 
 // AppLayout component to render: Header, Body and Footer Component
 const AppLayout = () => {
-  const [width, setWidth] = useState();
+  const [width, setWidth] = useState("25px");
 
   return (
     <React.Fragment>

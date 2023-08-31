@@ -31,11 +31,129 @@
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #root {
     transition: margin-left .5s;
-    padding: 20px;
+    padding-left: 20px;
+    font-family: 'Open Sans';
+    background-color: #f7f5f4;
+  }
+  .home::-webkit-scrollbar {
+    display: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+  }
+
+  .header{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: #f7f5f4;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.3);
+    position: sticky; top: 0;
+  }
+  .moreGrid:after {
+    content: '\2807';
+    font-size: 20px;
+  }
+  .btn{
+    background-color: #ff3620;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 32px;
+    cursor: pointer;
+    color: white;
+  }
+  .btnGrid{
+    margin-left: 15%;
+  }
+  .headingTextGrid{
+    margin-left: 15%;
+    
+  }
+  .prodDdContainder{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+  }
+  .dropDown{
+    border: none;
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    border: solid 1px #80808061;
+    text-align: center;
+  }
+
+  .input {
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+    width: 80%;
+    height: 10px;
+    border: solid 1px #80808061;
+  }
+  
+  .searchBtn {
+    background-color: #ff3620;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+    
+  }
+  
+  .searchBtn:hover {
+    background: #ff2020;
+  }
+  
+  .serachBarContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    margin: 5px;
+    margin-left: 15%;
+  }
+  .listContainer{
+    list-style-type: none;
+  }
+  .listItem{
+    background: white;
+    width: 80%;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #80808073;
+    padding: 5px;
+  }
+  .cardContainer{
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 1% 10% 5px 15%;
+  }
+  .cradHeader{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding-left: 20px;
   }

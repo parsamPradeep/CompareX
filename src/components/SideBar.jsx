@@ -9,12 +9,12 @@ const SideBar = ({ setWidth }) => {
       className="sidenav"
       style={{ width: sideBarWidth }}
       onMouseEnter={() => {
-        setWidth("150px");
+        setWidth("125px");
         setSideBarWidth("150px");
         setHide(false);
       }}
       onMouseLeave={() => {
-        setWidth("50px");
+        setWidth("25px");
         setSideBarWidth("50px");
         setHide(true);
       }}
