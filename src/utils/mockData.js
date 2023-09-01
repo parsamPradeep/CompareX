@@ -287,6 +287,5 @@ let prodMockData = {
       ],
     },
   },
-  total_products: ["A", "B", "C", "D"],
 };
 export default prodMockData;

@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaHome, FaPython, FaRProject, FaJava } from "react-icons/fa";
-const SideBar = ({ setWidth }) => {
+import { Link } from "react-router-dom";
+import AppContext from "../App";
+const SideBar = () => {
+  const { setWidth } = useContext(AppContext);
   const [sideBarWidth, setSideBarWidth] = useState();
   const [hide, setHide] = useState(true);
   return (
@@ -19,7 +22,7 @@ const SideBar = ({ setWidth }) => {
         setHide(true);
       }}
     >
-      <a href="#">
+      <Link to="/">
         <FaHome />{" "}
         <span
           className="itemName"
@@ -27,8 +30,8 @@ const SideBar = ({ setWidth }) => {
         >
           Home
         </span>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="/python">
         <FaPython />
         <span
           className="itemName"
@@ -36,8 +39,8 @@ const SideBar = ({ setWidth }) => {
         >
           Python
         </span>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="/r">
         <FaRProject />
         <span
           className="itemName"
@@ -45,8 +48,8 @@ const SideBar = ({ setWidth }) => {
         >
           R
         </span>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="java">
         <FaJava />
         <span
           className="itemName"
@@ -54,7 +57,7 @@ const SideBar = ({ setWidth }) => {
         >
           Java
         </span>
-      </a>
+      </Link>
     </div>
   );
 };

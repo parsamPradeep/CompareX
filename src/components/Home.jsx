@@ -1,14 +1,20 @@
-import Header from "./Header";
 import DropDown from "./DropDown";
 import Search from "./Search";
 import dropDownData from "../utils/DropdownConstants";
 import productsData from "../utils/mockData";
 import ComparisionCard from "./ComparisonCard";
-import { useState, createContext } from "react";
-export const SelectedValuesContext = createContext(null);
-const Home = ({ width }) => {
+import { useState, createContext, useContext } from "react";
+import { getAllPermutations } from "../utils/utils";
+import AppContext from "../App";
+import AddDelete from "./AddDelete";
+export const HomeContext = createContext(null);
+
+const Home = () => {
   const [currentDropDowns, setcurrentDropDowns] = useState(2);
   const [allSelectedDropDownVales, setAllSelectedDropDownVales] = useState([]);
+  const [allPermutation, setAllPermutation] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState();
+  const { width } = useContext(AppContext);
 
   const updateSelectedDropDownValues = (previous, current) => {
     let tempData = allSelectedDropDownVales;
@@ -17,6 +23,9 @@ const Home = ({ width }) => {
       tempData.splice(index, 1);
     }
     tempData.push(current);
+    let tempPermutations = getAllPermutations(tempData);
+
+    setAllPermutation(tempPermutations);
     setAllSelectedDropDownVales(tempData);
   };
   const getCurrentDropDowns = () => {
@@ -31,24 +40,38 @@ const Home = ({ width }) => {
       );
     return dropDowns;
   };
+  let contextValue = {
+    allSelectedValues: allSelectedDropDownVales,
+    permutations: allPermutation,
+  };
+
   return (
     <div className="home" style={{ marginLeft: width }}>
-      <SelectedValuesContext.Provider value={allSelectedDropDownVales}>
-        <Header />
+      <HomeContext.Provider value={contextValue}>
         <div>
-          <div className="prodDdContainder">{getCurrentDropDowns()}</div>
-          <div>
-            <Search />
+          <div className="prodDdContainder">
+            {getCurrentDropDowns()}
+            <div>
+              <AddDelete
+                setcurrentDropDowns={setcurrentDropDowns}
+                currentDropDowns={currentDropDowns}
+              />
+            </div>
           </div>
           <div>
+            <Search
+              data={productsData.monthly_comparison}
+              setSelectedMonth={setSelectedMonth}
+            />
+          </div>
+          <div id="comparisonReport">
             <ComparisionCard
-              headerTitle="August Comparision"
+              selectedMonth={selectedMonth}
               prodData={productsData.monthly_comparison}
             />
           </div>
         </div>
-      </SelectedValuesContext.Provider>
-      Home Page
+      </HomeContext.Provider>
     </div>
   );
 };

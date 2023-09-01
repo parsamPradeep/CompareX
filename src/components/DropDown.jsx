@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
-import { SelectedValuesContext } from "./Home";
+import { HomeContext } from "./Home";
 const DropDown = ({ data, updateSelected }) => {
-  const allSelected = useContext(SelectedValuesContext);
-  console.log(allSelected, " from dropdowns");
+  const { allSelectedValues: allSelected } = useContext(HomeContext);
   const [selectedValue, setSelectedValue] = useState();
   const onChangedler = (event) => {
     let value = event?.target?.value;
@@ -23,8 +22,10 @@ const DropDown = ({ data, updateSelected }) => {
         onChange={(e) => onChangedler(e)}
       >
         <option value="select">---Select an Product--</option>
-        {data.map((item) => (
-          <option value={item.value}>{item.name}</option>
+        {data.map((item, inx) => (
+          <option key={inx} value={item.value}>
+            {item.name}
+          </option>
         ))}
       </select>
     </div>
