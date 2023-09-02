@@ -88,7 +88,7 @@
   }
   .prodDdContainder{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     height: 50px;
     align-items: center;
     margin: 5px 10% 5px 15%;
@@ -100,6 +100,7 @@
     border-radius: 5px;
     border: solid 1px #80808061;
     text-align: center;
+    margin-right: 20px;
   }
 
   .input {
@@ -209,4 +210,87 @@
   .noDataText{
     color: lightgray;
     height: 50px;
+  }
+
+  .App {
+    text-align: center;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: fixed;
+    bottom: 10vh;
+    width: 30%;
+    left: 70%;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .botBtn{
+    background-color: #ff2020;
+    border: none;
+    border-radius: 45%;
+    cursor: pointer;
+  }
+  .botDiv{
+    position: fixed;
+    bottom: 0;
+    left: 90%;
+    bottom: 2%;
+  }
+  .addDeleteContainer{
+   display: flex;
+   flex-direction: row;
+  }
+
+  @media screen and (max-width: 950px){
+    .dropDown{
+      width: 100px;
+    }
+    .input{
+      width: 70%;
+    }
+    .botDiv{
+      left: 85%;
+    }
   }
