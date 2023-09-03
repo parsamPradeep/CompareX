@@ -11,7 +11,7 @@ import Header from "./components/Header";
 import R from "./components/R";
 import ChatBot from "./components/chatBot/ChatBot";
 
-export default AppContext = createContext(null);
+const AppContext = createContext(null);
 const AppLayout = () => {
   const [width, setWidth] = useState("25px");
   const value = { width, setWidth };
@@ -54,3 +54,4 @@ const appRouter = createBrowserRouter([
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
+export default AppContext;
