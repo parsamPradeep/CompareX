@@ -18,7 +18,7 @@ const Search = ({ data, setSelectedMonth }) => {
     setFilteredValues(values);
   }, [allSelectedValues]);
 
-  const onTypeHandler = (value) => {
+  const onTypeHandler = ({ target: { value } }) => {
     let tempFiltered = dropDownValues.filter((item) => {
       return item.toLowerCase().indexOf(value.toLowerCase()) !== -1;
     });
@@ -27,15 +27,15 @@ const Search = ({ data, setSelectedMonth }) => {
     setHideDropDown(false);
   };
 
-  const handleOnSelectValue = (e, index, value) => {
-    e.preventDefault();
+  const handleOnSelectValue = (index, value) => {
     setInputValue(value);
     setSelectedIndex(index);
     setHideDropDown(true);
   };
 
-  const onBlurHandler = () => {
-    setTimeout(() => setHideDropDown(true), 1000);
+  const onBlurHandler = (e) => {
+    if (e.relatedTarget && e.relatedTarget.className === "searchValues") return;
+    setHideDropDown(true);
   };
 
   const onSearch = () => {
@@ -49,8 +49,8 @@ const Search = ({ data, setSelectedMonth }) => {
           type="text"
           placeholder="Search.."
           className="input"
-          onChange={(e) => onTypeHandler(e.target.value)}
-          onBlur={() => onBlurHandler()}
+          onChange={onTypeHandler}
+          onBlur={onBlurHandler}
           value={inputValue}
         />
         <button onClick={() => onSearch()} className="searchBtn" type="submit">
@@ -65,7 +65,7 @@ const Search = ({ data, setSelectedMonth }) => {
           <button
             key={inx}
             className="searchValues"
-            onClick={(e) => handleOnSelectValue(e, inx, value)}
+            onClick={handleOnSelectValue.bind(null, inx, value)}
           >
             {value}
           </button>
