@@ -1,8 +1,10 @@
 import { useState, useContext } from "react";
 import { HomeContext } from "./Home";
+
 const DropDown = ({ data, updateSelected }) => {
   const { allSelectedValues: allSelected } = useContext(HomeContext);
   const [selectedValue, setSelectedValue] = useState();
+
   const onChangedler = (event) => {
     let value = event?.target?.value;
     if (!allSelected.includes(value)) {
@@ -14,6 +16,7 @@ const DropDown = ({ data, updateSelected }) => {
       );
     }
   };
+
   return (
     <div>
       <select

@@ -11,12 +11,29 @@ const config = {
       widget: "learningOptions",
     }),
   ],
+  customComponents: {
+    header: () => (
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "5px",
+          borderRadius: "3px",
+          color: "black",
+          borderBottom: "2px solid grey",
+          fontSize: "1rem",
+          fontWeight: "500",
+        }}
+      >
+        AI Assistance
+      </div>
+    ),
+  },
   customStyles: {
     botMessageBox: {
-      backgroundColor: "#376B7E",
+      backgroundColor: "#ff2020",
     },
     chatButton: {
-      backgroundColor: "#376B7E",
+      backgroundColor: "#ff2020",
     },
   },
   widgets: [

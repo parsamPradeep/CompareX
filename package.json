@@ -1,15 +1,24 @@
 {
   "name": "comparex",
   "version": "1.0.0",
-  "description": "",
+  "description": "Marketplace Comparison",
   "scripts": {
     "start": "parcel public/index.html",
     "build": "parcel build public/index.html",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parsamPradeep/CompareX.git"
+  },
+  "author": "Pradeep Parsam",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parsamPradeep/CompareX/issues"
+  },
+  "homepage": "https://github.com/parsamPradeep/CompareX#readme",
+  "keywords": [],
+
   "devDependencies": {
     "@parcel/transformer-inline-string": "^2.9.3",
     "@parcel/transformer-svg-react": "^2.9.3",

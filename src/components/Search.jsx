@@ -1,6 +1,8 @@
-import { HomeContext } from "./Home";
 import { useContext, useState, useEffect } from "react";
+
+import { HomeContext } from "./Home";
 import { getPossibleDropdownValues } from "../utils/utils";
+
 const Search = ({ data, setSelectedMonth }) => {
   const { allSelectedValues } = useContext(HomeContext);
   const [dropDownValues, setDropDownValues] = useState([]);
@@ -14,8 +16,9 @@ const Search = ({ data, setSelectedMonth }) => {
     const values = getPossibleDropdownValues(months, allSelectedValues);
     setDropDownValues(values);
     setFilteredValues(values);
-  }, []);
-  let onTypeHandler = (value) => {
+  }, [allSelectedValues]);
+
+  const onTypeHandler = (value) => {
     let tempFiltered = dropDownValues.filter((item) => {
       return item.toLowerCase().indexOf(value.toLowerCase()) !== -1;
     });
@@ -23,18 +26,22 @@ const Search = ({ data, setSelectedMonth }) => {
     setFilteredValues(tempFiltered);
     setHideDropDown(false);
   };
+
   const handleOnSelectValue = (e, index, value) => {
     e.preventDefault();
     setInputValue(value);
     setSelectedIndex(index);
     setHideDropDown(true);
   };
+
   const onBlurHandler = () => {
     setTimeout(() => setHideDropDown(true), 1000);
   };
+
   const onSearch = () => {
     setSelectedMonth(months[selectedIndex]);
   };
+
   return (
     <div>
       <div className="serachBarContainer">

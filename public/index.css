@@ -27,6 +27,8 @@
   }
   .itemName{
     margin-left: 15px;
+    text-transform: uppercase;
+    font-size: 0.7em;
   }
   
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -271,16 +273,26 @@
     border: none;
     border-radius: 45%;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
   }
   .botDiv{
     position: fixed;
     bottom: 0;
-    left: 90%;
+    left: 95%;
     bottom: 2%;
+
   }
   .addDeleteContainer{
    display: flex;
    flex-direction: row;
+  }
+  .compareText{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 15%;
+    margin-top: 20px;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 950px){
@@ -291,6 +303,10 @@
       width: 70%;
     }
     .botDiv{
-      left: 85%;
+      left: 90%;
     }
   }
+
+  option{
+    border: 2px solid red;
+  } 

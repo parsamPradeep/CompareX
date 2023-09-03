@@ -1,7 +1,9 @@
-import { HomeContext } from "./Home";
 import { useContext } from "react";
 import { v4 as uuid } from "uuid";
+
+import { HomeContext } from "./Home";
 import { getAllPermutationData } from "../utils/utils";
+
 const ComparisionCard = ({ prodData, selectedMonth }) => {
   const { permutations } = useContext(HomeContext);
   const months = Object.keys(prodData);

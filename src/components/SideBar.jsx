@@ -1,63 +1,40 @@
 import { useState, useContext } from "react";
-import { FaHome, FaPython, FaRProject, FaJava } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { sideBarObj } from "../utils/constants";
 import AppContext from "../App";
 const SideBar = () => {
   const { setWidth } = useContext(AppContext);
   const [sideBarWidth, setSideBarWidth] = useState();
-  const [hide, setHide] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
+  const onMouseMove = () => {
+    setWidth("125px");
+    setSideBarWidth("150px");
+    setIsHidden(false);
+  };
+  const onMouseOut = () => {
+    setWidth("25px");
+    setSideBarWidth("50px");
+    setIsHidden(true);
+  };
   return (
     <div
       id="mySidenav"
       className="sidenav"
       style={{ width: sideBarWidth }}
-      onMouseEnter={() => {
-        setWidth("125px");
-        setSideBarWidth("150px");
-        setHide(false);
-      }}
-      onMouseLeave={() => {
-        setWidth("25px");
-        setSideBarWidth("50px");
-        setHide(true);
-      }}
+      onMouseEnter={onMouseMove}
+      onMouseLeave={onMouseOut}
     >
-      <Link to="/">
-        <FaHome />{" "}
-        <span
-          className="itemName"
-          style={{ visibility: hide ? "hidden" : "unset" }}
-        >
-          Home
-        </span>
-      </Link>
-      <Link to="/python">
-        <FaPython />
-        <span
-          className="itemName"
-          style={{ visibility: hide ? "hidden" : "unset" }}
-        >
-          Python
-        </span>
-      </Link>
-      <Link to="/r">
-        <FaRProject />
-        <span
-          className="itemName"
-          style={{ visibility: hide ? "hidden" : "unset" }}
-        >
-          R
-        </span>
-      </Link>
-      <Link to="java">
-        <FaJava />
-        <span
-          className="itemName"
-          style={{ visibility: hide ? "hidden" : "unset" }}
-        >
-          Java
-        </span>
-      </Link>
+      {sideBarObj.map((item, inx) => (
+        <Link to={item.link} key={inx}>
+          {item.icon}
+          <span
+            className="itemName"
+            style={{ visibility: isHidden ? "hidden" : "unset" }}
+          >
+            {item.name}
+          </span>
+        </Link>
+      ))}
     </div>
   );
 };

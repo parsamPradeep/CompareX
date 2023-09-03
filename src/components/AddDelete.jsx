@@ -1,8 +1,9 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import addSvg from "../utils/add.svg";
 import removeSvg from "../utils/remove.svg";
-import { ToastContainer, toast } from "react-toastify";
-import "./AddDelete";
-import "react-toastify/dist/ReactToastify.css";
+
 const MIN_PRODUCTS = 1;
 const MAX_PRODUCTS = 4;
 
@@ -10,6 +11,7 @@ const AddDelete = ({ currentDropDowns, setcurrentDropDowns }) => {
   const notify = (message) => {
     toast(message, { type: toast.TYPE.WARNING });
   };
+
   return (
     <div className="addDeleteContainer">
       <button

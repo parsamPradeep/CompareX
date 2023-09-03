@@ -1,12 +1,15 @@
+import { useState, createContext, useContext } from "react";
+
+import ComparisionCard from "./ComparisonCard";
 import DropDown from "./DropDown";
 import Search from "./Search";
-import dropDownData from "../utils/DropdownConstants";
-import productsData from "../utils/mockData";
-import ComparisionCard from "./ComparisonCard";
-import { useState, createContext, useContext } from "react";
-import { getAllPermutations } from "../utils/utils";
 import AppContext from "../App";
 import AddDelete from "./AddDelete";
+
+import dropDownData from "../utils/constants";
+import productsData from "../utils/mockData";
+import { getAllPermutations } from "../utils/utils";
+
 export const HomeContext = createContext(null);
 
 const Home = () => {
@@ -26,8 +29,9 @@ const Home = () => {
     let tempPermutations = getAllPermutations(tempData);
 
     setAllPermutation(tempPermutations);
-    setAllSelectedDropDownVales(tempData);
+    setAllSelectedDropDownVales([...tempData]);
   };
+
   const getCurrentDropDowns = () => {
     let dropDowns = [];
     for (let i = 0; i < currentDropDowns; i++)
@@ -40,6 +44,7 @@ const Home = () => {
       );
     return dropDowns;
   };
+
   let contextValue = {
     allSelectedValues: allSelectedDropDownVales,
     permutations: allPermutation,
@@ -49,6 +54,9 @@ const Home = () => {
     <div className="home" style={{ marginLeft: width }}>
       <HomeContext.Provider value={contextValue}>
         <div>
+          <div className="compareText">
+            What would you like to compare today?
+          </div>
           <div className="prodDdContainder">
             {getCurrentDropDowns()}
             <div>

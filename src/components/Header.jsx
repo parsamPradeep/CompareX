@@ -1,8 +1,10 @@
 import jsPDF from "jspdf";
 import { useContext } from "react";
+
 import AppContext from "../App";
 const Header = () => {
   const { width } = useContext(AppContext);
+
   const downloadPdfDocument = () => {
     const input = document.getElementById("comparisonReport");
     const pdf = new jsPDF({ unit: "px", format: "letter", userUnit: "px" });
