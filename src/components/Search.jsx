@@ -34,8 +34,9 @@ const Search = ({ data, setSelectedMonth }) => {
     setHideDropDown(true);
   };
 
-  const onBlurHandler = () => {
-    setTimeout(() => setHideDropDown(true), 1000);
+  const onBlurHandler = (e) => {
+    if (e.relatedTarget && e.relatedTarget.className === "searchValues") return;
+    setHideDropDown(true);
   };
 
   const onSearch = () => {
@@ -50,7 +51,7 @@ const Search = ({ data, setSelectedMonth }) => {
           placeholder="Search.."
           className="input"
           onChange={(e) => onTypeHandler(e.target.value)}
-          onBlur={() => onBlurHandler()}
+          onBlur={onBlurHandler}
           value={inputValue}
         />
         <button onClick={() => onSearch()} className="searchBtn" type="submit">
